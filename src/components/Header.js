@@ -1,22 +1,43 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import "./HeaderStyle.css";
+import "bulma/css/bulma.css";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isActive: false };
+  }
+
+  handleClick = () => {
+    this.setState(({ isActive }) => ({ isActive: !isActive }));
+  };
+
   renderLinks() {
     if (this.props.authenticated) {
       return (
         <div>
-          <Link to="/signout">Sign Out</Link>
-          <Link to="/feature">Feature</Link>
+          <div className="buttons">
+            <Link className="button is-light" to="/signout">
+              Sign Out
+            </Link>
+            <Link className="button is-primary" to="/lawform">
+              Post a Law
+            </Link>
+          </div>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/signin">Sign In</Link>
+          <div className="buttons">
+            <Link className="button is-light" to="/signup">
+              Sign Up
+            </Link>
+            <Link className="button is-primary" to="/signin">
+              Sign In
+            </Link>
+          </div>
         </div>
       );
     }
@@ -24,11 +45,40 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="header">
-        <Link to="/">Redux Auth</Link>
-        {this.props.username && <div>{`Welcome ${this.props.username}`}</div>}
-        {this.renderLinks()}
-      </div>
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <Link className="navbar-item" to="/">
+            Home
+          </Link>
+          {this.props.username && (
+            <div className="navbar-item">{`Welcome ${
+              this.props.username
+            }`}</div>
+          )}
+          <a
+            onClick={this.handleClick}
+            role="button"
+            className="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </a>
+        </div>
+        <div
+          id="navbarBasicExample"
+          className={
+            this.state.isActive ? "navbar-menu is-active" : "navbar-menu"
+          }
+        >
+          <div className="navbar-end">
+            <div className="navbar-item">{this.renderLinks()}</div>
+          </div>
+        </div>
+      </nav>
     );
   }
 }

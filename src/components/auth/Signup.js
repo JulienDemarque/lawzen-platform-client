@@ -3,6 +3,10 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import "bulma/css/bulma.css";
+
+// Note: I haven't handle error message properly yet. It is still to be done.
+// Check the firebase-react-login for exemple
 
 class Signup extends Component {
   onSubmit = formProps => {
@@ -15,37 +19,63 @@ class Signup extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form autoComplete="off" onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <label>User name</label>
-          <Field
-            name="username"
-            type="text"
-            component="input"
-            autoComplete="off"
-          />
-        </fieldset>
-        <fieldset>
-          <label>Email</label>
-          <Field
-            name="email"
-            type="text"
-            component="input"
-            autoComplete="off"
-          />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
-          <Field
-            name="password"
-            type="password"
-            component="input"
-            autoComplete="off"
-          />
-        </fieldset>
-        <div>{this.props.errorMessage}</div>
-        <button>Sign Up!</button>
-      </form>
+      <div>
+        <h5 className="title is-5">Sign-up</h5>
+        <form autoComplete="off" onSubmit={handleSubmit(this.onSubmit)}>
+          <div className="field">
+            <label className="label">Username</label>
+            <div className="control has-icons-left has-icons-right">
+              <Field
+                className="input"
+                placeholder="username"
+                name="username"
+                type="text"
+                component="input"
+                autoComplete="off"
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-user" />
+              </span>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control has-icons-left has-icons-right">
+              <Field
+                className="input"
+                placeholder="email"
+                name="email"
+                type="text"
+                component="input"
+                autoComplete="off"
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-envelope" />
+              </span>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control has-icons-left has-icons-right">
+              <Field
+                className="input"
+                placeholder="password"
+                name="password"
+                type="password"
+                component="input"
+                autoComplete="off"
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-unlock" />
+              </span>
+            </div>
+          </div>
+          <div>{this.props.errorMessage}</div>
+          <div className="control">
+            <button className="button is-link">Sign up</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

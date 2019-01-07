@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "./Header";
+import "bulma/css/bulma.css";
 
 export default ({ children }) => {
   return (
-    <div>
+    <div className="container">
       <Header />
-      {children}
+      <section className="section">{children}</section>
     </div>
   );
 };

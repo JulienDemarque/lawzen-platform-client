@@ -9,7 +9,7 @@ import reducers from "./reducers";
 import App from "./components/App";
 import Welcome from "./components/Welcome";
 import Signup from "./components/auth/Signup";
-import Feature from "./components/Feature";
+import LawForm from "./components/LawForm";
 import Signout from "./components/auth/Signout";
 import Signin from "./components/auth/Signin";
 
@@ -28,7 +28,7 @@ ReactDOM.render(
         <Route path="/" exact component={Welcome} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/signin" exact component={Signin} />
-        <Route path="/feature" exact component={Feature} />
+        <Route path="/lawform" exact component={LawForm} />
         <Route path="/signout" exact component={Signout} />
       </App>
     </BrowserRouter>
