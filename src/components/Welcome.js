@@ -38,6 +38,17 @@ class Welcome extends React.Component {
     this.getRecentLaws();
   }
 
+  renderButtonClass = law => {
+    const userVoted = law.upVotes.find(voter => {
+      return voter.username === this.props.username;
+    });
+    if (userVoted) {
+      return "button is-large is-primary is-inverted";
+    } else {
+      return "button is-large is-dark";
+    }
+  };
+
   render() {
     return (
       <div>
@@ -47,6 +58,8 @@ class Welcome extends React.Component {
         <div className="container is-fluid">
           <h5 className="title is-5">Recent Propositions:</h5>
           {this.state.recent.map(law => {
+            console.log(law);
+            console.log(this.props);
             return (
               <div key={law.title} className="notification">
                 <div className="columns">
@@ -56,16 +69,20 @@ class Welcome extends React.Component {
                   </div>
                   <div className="column">
                     <div className="has-text-right m-b-xl">
-                      <button
-                        onClick={this.handleClick}
-                        name={law.title}
-                        className="button is-large is-dark"
-                      >
-                        <span className="icon is-big is-left">
-                          <i className="fas fa-vote-yea" />
+                      <p className="is-vertical-center">
+                        <span className="is-size-5 m-r-sm">
+                          {law.upVotes.length} person approved
                         </span>
-                      </button>
-                      <p>Upvote: {law.upVotes.length}</p>
+                        <button
+                          onClick={this.handleClick}
+                          name={law.title}
+                          className={this.renderButtonClass(law)}
+                        >
+                          <span className="icon is-big is-left">
+                            <i className="fas fa-vote-yea" />
+                          </span>
+                        </button>
+                      </p>
                     </div>
                     <p className="has-text-right">
                       <strong> - {law.author.username}</strong>
