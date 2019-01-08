@@ -13,10 +13,14 @@ import LawForm from "./components/LawForm";
 import Signout from "./components/auth/Signout";
 import Signin from "./components/auth/Signin";
 
+// We are missing the username, should put it in the localStorage too
 const store = createStore(
   reducers,
   {
-    auth: { authenticated: localStorage.getItem("token") }
+    auth: {
+      authenticated: localStorage.getItem("token"),
+      username: localStorage.getItem("username")
+    }
   },
   applyMiddleware(reduxThunk)
 );

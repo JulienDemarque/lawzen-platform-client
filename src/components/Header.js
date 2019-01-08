@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import "bulma/css/bulma.css";
 
 class Header extends Component {
   constructor(props) {
@@ -51,9 +50,9 @@ class Header extends Component {
             Home
           </Link>
           {this.props.username && (
-            <div className="navbar-item">{`Welcome ${
-              this.props.username
-            }`}</div>
+            <div className="navbar-item">
+              <strong>{this.props.username}</strong>
+            </div>
           )}
           <a
             onClick={this.handleClick}

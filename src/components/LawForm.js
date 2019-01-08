@@ -4,14 +4,12 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import "bulma/css/bulma.css";
 
 class LawForm extends Component {
   onSubmit = formProps => {
     console.log("formProps: ", formProps);
     this.props.addLaw(formProps, () => {
-      //this.props.history.push("/");
-      console.log("submitted");
+      this.props.history.push("/");
     });
   };
 

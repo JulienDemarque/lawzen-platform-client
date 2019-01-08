@@ -12,6 +12,7 @@ export const signup = (formProps, callback) => async dispatch => {
     localStorage.setItem("username", response.data.username);
     callback();
   } catch (e) {
+    console.log("error:", e);
     dispatch({ type: AUTH_ERROR, payload: "Email in use" });
   }
 };
@@ -43,6 +44,7 @@ export const addLaw = (formProps, callback) => async dispatch => {
       config
     );
     console.log(response);
+    callback();
   } catch (e) {
     console.log(e);
   }

@@ -3,7 +3,6 @@ import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import "bulma/css/bulma.css";
 
 // Note: I haven't handle error message properly yet. It is still to be done.
 // Check the firebase-react-login for exemple
