@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import { Flipper } from "react-flip-toolkit";
 import LawView from "./LawView";
 
 class Welcome extends React.Component {
@@ -57,6 +58,7 @@ class Welcome extends React.Component {
   };
 
   render() {
+    console.log(this.state.top.map(law => law.title).join(""));
     return (
       <div>
         <div className="container is-fluid m-b-xl">
@@ -66,27 +68,33 @@ class Welcome extends React.Component {
         </div>
         <div className="container is-fluid m-b-xl">
           <h5 className="title is-5">Top Propositions:</h5>
-          {this.state.top.map(law => {
-            return (
-              <LawView
-                key={law.title}
-                handleClick={this.handleClick}
-                law={law}
-              />
-            );
-          })}
+          <Flipper flipKey={this.state.top.map(law => law.title).join("")}>
+            {this.state.top.map(law => {
+              return (
+                <LawView
+                  flipId={law.title}
+                  key={law.title}
+                  handleClick={this.handleClick}
+                  law={law}
+                />
+              );
+            })}
+          </Flipper>
         </div>
         <div className="container is-fluid">
           <h5 className="title is-5">Recent Propositions:</h5>
-          {this.state.recent.map(law => {
-            return (
-              <LawView
-                key={law.title}
-                handleClick={this.handleClick}
-                law={law}
-              />
-            );
-          })}
+          <Flipper flipKey={this.state.recent.map(law => law.title).join("")}>
+            {this.state.recent.map(law => {
+              return (
+                <LawView
+                  flipId={law.title}
+                  key={law.title}
+                  handleClick={this.handleClick}
+                  law={law}
+                />
+              );
+            })}
+          </Flipper>
         </div>
       </div>
     );

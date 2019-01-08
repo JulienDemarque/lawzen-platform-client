@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Flipped } from "react-flip-toolkit";
 
 class LawView extends React.Component {
   renderButtonClass = law => {
@@ -14,39 +15,42 @@ class LawView extends React.Component {
   };
 
   render() {
-    const { law, handleClick, key } = this.props;
+    const { law, handleClick, key, flipId } = this.props;
+    console.log(law.title);
     return (
-      <div key={key} className="notification">
-        <div className="columns">
-          <div className="column">
-            <h6 className="title is-6">{law.title}</h6>
-            <p>{law.description}</p>
-          </div>
-          <div className="column">
-            <div className="has-text-right m-b-md">
-              <p className="is-vertical-center">
-                <span className="is-size-5 m-r-sm">
-                  {law.upVotes.length} person approved
-                </span>
-                <button
-                  onClick={handleClick}
-                  name={law.title}
-                  className={this.renderButtonClass(law)}
-                >
-                  <span className="icon is-big is-left">
-                    <i className="fas fa-vote-yea" />
+      <Flipped key={key} flipId={flipId}>
+        <div className="notification">
+          <div className="columns">
+            <div className="column">
+              <h6 className="title is-6">{law.title}</h6>
+              <p>{law.description}</p>
+            </div>
+            <div className="column">
+              <div className="has-text-right m-b-md">
+                <p className="is-vertical-center">
+                  <span className="is-size-5 m-r-sm">
+                    {law.upVotes.length} person approved
                   </span>
-                </button>
-              </p>
+                  <button
+                    onClick={handleClick}
+                    name={law.title}
+                    className={this.renderButtonClass(law)}
+                  >
+                    <span className="icon is-big is-left">
+                      <i className="fas fa-vote-yea" />
+                    </span>
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
+          <div>
+            <p className="has-text-right">
+              <strong> - {law.author.username}</strong>
+            </p>
+          </div>
         </div>
-        <div>
-          <p className="has-text-right">
-            <strong> - {law.author.username}</strong>
-          </p>
-        </div>
-      </div>
+      </Flipped>
     );
   }
 }
