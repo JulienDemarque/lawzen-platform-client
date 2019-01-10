@@ -65,8 +65,10 @@ class ScrollRecent extends React.Component {
       const lawIndex = this.state.recent.findIndex(
         law => law.title === lawTitle
       );
+      console.log("responseChangedLaw.data: ", responseChangedLaw.data);
       this.setState(({ recent }) => {
         recent[lawIndex] = responseChangedLaw.data;
+        console.log("recent:", recent);
         return { recent: recent };
       });
     }
@@ -92,7 +94,7 @@ class ScrollRecent extends React.Component {
 
   render() {
     const { recent } = this.state;
-
+    console.log(recent)
     return (
       <div>
         <div className="container is-fluid">
