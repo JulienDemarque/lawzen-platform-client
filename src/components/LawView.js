@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Flipped } from "react-flip-toolkit";
+import {formatTime} from "../utils/formatTime"
 
 class LawView extends React.Component {
   renderButtonClass = law => {
@@ -17,6 +18,8 @@ class LawView extends React.Component {
   render() {
     const { law, handleClick, key, flipId } = this.props;
     console.log(law.title);
+    const formatedTime = formatTime(law.createdAt);
+    console.log(formatedTime)
     return (
       <Flipped key={key} flipId={flipId}>
         <div className="notification">
@@ -46,7 +49,7 @@ class LawView extends React.Component {
           </div>
           <div>
             <p className="has-text-right">
-              <strong>{law.author.username}</strong>
+              Posted {formatedTime.time} {formatedTime.unit} ago by <strong>{law.author.username}</strong>
             </p>
           </div>
         </div>
