@@ -65,10 +65,10 @@ class ScrollRecent extends React.Component {
       const lawIndex = this.state.recent.findIndex(
         law => law.title === lawTitle
       );
-      console.log("responseChangedLaw.data: ", responseChangedLaw.data);
+      console.log("responseChangedLaw: ", responseChangedLaw);
       this.setState(({ recent }) => {
         recent[lawIndex] = responseChangedLaw.data;
-        console.log("recent:", recent);
+        console.log("recent:", recent)
         return { recent: recent };
       });
     }
