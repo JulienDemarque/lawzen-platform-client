@@ -46,7 +46,7 @@ class LawView extends React.Component {
           </div>
           <div>
             <p className="has-text-right">
-              <strong> - {law.author.username}</strong>
+              <strong>{law.author.username}</strong>
             </p>
           </div>
         </div>

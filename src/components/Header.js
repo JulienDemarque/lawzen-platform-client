@@ -54,6 +54,9 @@ class Header extends Component {
               <strong>{this.props.username}</strong>
             </div>
           )}
+          <Link className="navbar-item" to="/explore">
+            Explore
+          </Link>
           <a
             onClick={this.handleClick}
             role="button"
