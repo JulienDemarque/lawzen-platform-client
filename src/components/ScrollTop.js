@@ -40,7 +40,7 @@ class ScrollTop extends React.Component {
     this.setState(state => ({
       top: removeDuplicate(state.top.concat(response.data))
     }));
-    console.log("Response:", response);
+    // console.log("Response:", response);
   }
 
   handleClick = e => {

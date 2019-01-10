@@ -7,6 +7,8 @@ import * as actions from "../actions";
 
 class LawForm extends Component {
   onSubmit = formProps => {
+    formProps.lawTitle = formProps.lawTitle.trim();
+    formProps.lawDescription = formProps.lawDescription.trim();
     console.log("formProps: ", formProps);
     this.props.addLaw(formProps, () => {
       this.props.history.push("/");

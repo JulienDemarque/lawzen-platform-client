@@ -34,16 +34,15 @@ export const signin = (formProps, callback) => async dispatch => {
 
 export const addLaw = (formProps, callback) => async dispatch => {
   try {
-    console.log("localStorage token: ", localStorage.getItem("token"));
+    // console.log("localStorage token: ", localStorage.getItem("token"));
     const token = localStorage.getItem("token");
     const config = { headers: { authorization: token } };
-
     const response = await axios.post(
       `${API_URL}/law`,
       formProps,
       config
     );
-    console.log(response);
+    // console.log(response);
     callback();
   } catch (e) {
     console.log(e);

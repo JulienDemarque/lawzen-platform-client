@@ -41,7 +41,7 @@ class ScrollRecent extends React.Component {
     this.setState(state => ({
       recent: removeDuplicate(state.recent.concat(response.data))
     }));
-    console.log("Response:", response);
+    // console.log("Response:", response);
   }
 
   handleClick = e => {
@@ -57,7 +57,7 @@ class ScrollRecent extends React.Component {
       { lawTitle },
       config
     );
-    console.log(responseUpdate);
+    // console.log(responseUpdate);
     if (responseUpdate.data === "saved your vote!") {
       const responseChangedLaw = await axios.get(
         `${API_URL}/law/single/${lawTitle}`
@@ -65,10 +65,10 @@ class ScrollRecent extends React.Component {
       const lawIndex = this.state.recent.findIndex(
         law => law.title === lawTitle
       );
-      console.log("responseChangedLaw: ", responseChangedLaw);
+      // console.log("responseChangedLaw: ", responseChangedLaw);
       this.setState(({ recent }) => {
         recent[lawIndex] = responseChangedLaw.data;
-        console.log("recent:", recent)
+        // console.log("recent:", recent)
         return { recent: recent };
       });
     }
@@ -94,7 +94,7 @@ class ScrollRecent extends React.Component {
 
   render() {
     const { recent } = this.state;
-    console.log(recent)
+    // console.log(recent)
     return (
       <div>
         <div className="container is-fluid">
