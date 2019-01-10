@@ -67,7 +67,7 @@ class Welcome extends React.Component {
           </h3>
         </div>
         <div className="container is-fluid m-b-xl">
-          <h5 className="title is-5">Top Propositions:</h5>
+          <h5 className="title is-5">Five Top Propositions:</h5>
           <Flipper flipKey={this.state.top.map(law => law.title).join("")}>
             {this.state.top.map(law => {
               return (
@@ -82,7 +82,7 @@ class Welcome extends React.Component {
           </Flipper>
         </div>
         <div className="container is-fluid">
-          <h5 className="title is-5">Recent Propositions:</h5>
+          <h5 className="title is-5">Five Most Recent Propositions:</h5>
           <Flipper flipKey={this.state.recent.map(law => law.title).join("")}>
             {this.state.recent.map(law => {
               return (
