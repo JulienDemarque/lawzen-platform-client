@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Flipper } from "react-flip-toolkit";
 import LawView from "./LawView";
+import { API_URL } from "../config.js";
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -16,13 +17,13 @@ class Welcome extends React.Component {
   }
 
   async getRecentLaws() {
-    const response = await axios.get("http://localhost:3090/recent");
+    const response = await axios.get(`${API_URL}/recent`);
     this.setState({ recent: response.data });
     console.log(response);
   }
 
   async getTopLaws() {
-    const response = await axios.get("http://localhost:3090/top");
+    const response = await axios.get(`${API_URL}/top`);
     this.setState({ top: response.data });
     console.log(response);
   }
@@ -36,7 +37,7 @@ class Welcome extends React.Component {
     const config = { headers: { authorization: token } };
 
     const response = await axios.post(
-      `http://localhost:3090/upvote/${lawTitle}`,
+      `${API_URL}/upvote/${lawTitle}`,
       { lawTitle },
       config
     );

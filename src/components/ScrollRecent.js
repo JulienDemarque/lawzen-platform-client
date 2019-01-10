@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Flipper } from "react-flip-toolkit";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LawView from "./LawView";
+import { API_URL } from "../config.js";
 import { removeDuplicate } from "../utils/removeDuplicate";
 
 class ScrollRecent extends React.Component {
@@ -31,7 +32,7 @@ class ScrollRecent extends React.Component {
 
   async getRecentLaws(page) {
     const response = await axios.get(
-      `http://localhost:3090/recent/pages/${page}`
+      `${API_URL}/recent/pages/${page}`
     );
     if (!response.data.length) {
       console.log(`There is no page ${page}!!`);
@@ -52,14 +53,14 @@ class ScrollRecent extends React.Component {
     const config = { headers: { authorization: token } };
 
     const responseUpdate = await axios.post(
-      `http://localhost:3090/upvote/${lawTitle}`,
+      `${API_URL}/upvote/${lawTitle}`,
       { lawTitle },
       config
     );
     console.log(responseUpdate);
     if (responseUpdate.data === "saved your vote!") {
       const responseChangedLaw = await axios.get(
-        `http://localhost:3090/law/single/${lawTitle}`
+        `${API_URL}/law/single/${lawTitle}`
       );
       const lawIndex = this.state.recent.findIndex(
         law => law.title === lawTitle

@@ -1,10 +1,10 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR, LAW_SUBMIT } from "./types";
-
+import { AUTH_USER, AUTH_ERROR } from "./types";
+import { API_URL } from "../config.js";
 export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post(
-      "http://localhost:3090/signup",
+      `${API_URL}/signup`,
       formProps
     );
     dispatch({ type: AUTH_USER, payload: response.data });
@@ -20,7 +20,7 @@ export const signup = (formProps, callback) => async dispatch => {
 export const signin = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post(
-      "http://localhost:3090/signin",
+    `${API_URL}/signin`,
       formProps
     );
     dispatch({ type: AUTH_USER, payload: response.data });
@@ -39,7 +39,7 @@ export const addLaw = (formProps, callback) => async dispatch => {
     const config = { headers: { authorization: token } };
 
     const response = await axios.post(
-      "http://localhost:3090/law",
+      `${API_URL}/law`,
       formProps,
       config
     );
