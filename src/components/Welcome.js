@@ -63,9 +63,10 @@ class Welcome extends React.Component {
     return (
       <div>
         <div className="container is-fluid m-b-xl">
-          <h3 className="title is-3">
-            Welcome! {!this.props.authenticated && "Sign up or sign in!"}
-          </h3>
+          <h3 className="title is-3">Welcome to LawZen! </h3>
+          <h4 className="title is-4 has-text-grey">
+            {!this.props.authenticated && "Sign up or sign in!"}
+          </h4>
         </div>
         <div className="container is-fluid m-b-xl">
           <h5 className="title is-5">Five Top Propositions:</h5>

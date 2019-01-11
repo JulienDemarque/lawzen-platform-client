@@ -8,6 +8,7 @@ import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
 import App from "./components/App";
 import Welcome from "./components/Welcome";
+import About from "./components/About";
 import Explore from "./components/Explore";
 import LawForm from "./components/LawForm";
 import Signup from "./components/auth/Signup";
@@ -31,6 +32,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App>
         <Route path="/" exact component={Welcome} />
+        <Route path="/about" exact component={About} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/signin" exact component={Signin} />
         <Route path="/lawform" exact component={LawForm} />

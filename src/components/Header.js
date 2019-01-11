@@ -57,6 +57,9 @@ class Header extends Component {
           <Link className="navbar-item" to="/explore">
             Explore
           </Link>
+          <Link className="navbar-item" to="/about">
+            What is LawZen?
+          </Link>
           <a
             onClick={this.handleClick}
             role="button"
