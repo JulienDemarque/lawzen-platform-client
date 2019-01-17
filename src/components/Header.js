@@ -54,12 +54,7 @@ class Header extends Component {
               <strong>{this.props.username}</strong>
             </div>
           )}
-          <Link className="navbar-item" to="/explore">
-            Explore
-          </Link>
-          <Link className="navbar-item" to="/about">
-            What is LawZen?
-          </Link>
+
           <a
             onClick={this.handleClick}
             role="button"
@@ -79,6 +74,14 @@ class Header extends Component {
             this.state.isActive ? "navbar-menu is-active" : "navbar-menu"
           }
         >
+          <div className="navbar-start">
+            <Link className="navbar-item" to="/explore">
+              Explore
+            </Link>
+            <Link className="navbar-item" to="/about">
+              What is LawZen?
+            </Link>
+          </div>
           <div className="navbar-end">
             <div className="navbar-item">{this.renderLinks()}</div>
           </div>

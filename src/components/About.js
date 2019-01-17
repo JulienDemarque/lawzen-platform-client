@@ -18,7 +18,7 @@ const About = () => {
           We believe giving more control to citizen over the political sphere is
           not only just, but would likely help resolve some issues that the
           representative system couldn't. The idea of LawZen is to popularize
-          the use of the Citizens' Initiative Referendum (RIC in french)
+          the use of the Citizens Initiative Referendum (RIC in french)
         </p>
       </div>
       <div className="container is-fluid m-b-xl">
